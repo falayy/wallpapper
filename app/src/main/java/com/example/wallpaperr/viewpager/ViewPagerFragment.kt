@@ -10,20 +10,21 @@ import androidx.databinding.DataBindingUtil
 
 import com.example.wallpaperr.R
 import com.example.wallpaperr.databinding.FragmentViewPagerBinding
+import kotlinx.android.synthetic.main.fragment_view_pager.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class ViewPagerFragment : Fragment() {
-   private lateinit var  binding : FragmentViewPagerBinding
+    private lateinit var binding: FragmentViewPagerBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_view_pager, container, false)
+        view_pager.adapter = ViewPagerAdapter()
 
-         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_view_pager, container, false)
         return binding.root
     }
 

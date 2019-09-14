@@ -13,7 +13,7 @@
     android:layout_height="match_parent"
     android:id="@+id/nav_host_fragment"
     app:navGraph="@navigation/navigation"
-    android:name="com.example.wallpaperr.base.BaseFragment"
+    android:name="com.example.wallpaperr.viewpager.ViewPagerFragment"
     app:defaultNavHost="true"
     />
 
