@@ -3,20 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/viewPagerFragment">
+    app:startDestination="@id/fullImageUrlFragment">
 
-    <fragment
-        android:id="@+id/viewPagerFragment"
-        android:name="com.example.wallpaperr.viewpager.ViewPagerFragment"
-        android:label="fragment_view_pager"
-        tools:layout="@layout/fragment_view_pager" >
-        <action
-            android:id="@+id/action_viewPagerFragment_to_pictureGridFragment"
-            app:destination="@id/pictureGridFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/pictureGridFragment"
         android:name="com.example.wallpaperr.mainscreen.PictureGridFragment"
         android:label="fragment_picture_grid"
-        tools:layout="@layout/fragment_picture_grid" />
+        tools:layout="@layout/fragment_picture_grid" >
+        <action
+            android:id="@+id/action_pictureGridFragment_to_fullImageUrlFragment"
+            app:destination="@id/fullImageUrlFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullImageUrlFragment"
+        android:name="com.example.wallpaperr.mainscreen.FullImageUrlFragment"
+        android:label="fragment_full_image_url"
+        tools:layout="@layout/fragment_full_image_url" />
 </navigation>
