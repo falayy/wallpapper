@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
 
 
 @JsonClass(generateAdapter = true)
-data class NetworkImageContainer(val images : List<Images>)
+data class NetworkImageContainer(val images : List<NetworkImage>)
 
 
 @JsonClass(generateAdapter = true)

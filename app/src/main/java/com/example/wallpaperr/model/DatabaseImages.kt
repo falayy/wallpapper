@@ -10,7 +10,7 @@ data class DatabaseImages constructor(
     val id: Int,
     val previewImageUrl: String,
     val fullImage: String
-) {
+)
 
 
     fun List<DatabaseImages>.asDomainModel(): List<Images> {
@@ -24,4 +24,3 @@ data class DatabaseImages constructor(
     }
 
 
-}

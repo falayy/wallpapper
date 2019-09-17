@@ -1,6 +1,7 @@
 package com.example.wallpaperr.services
 
 import com.example.wallpaperr.model.DatabaseImages
+import com.example.wallpaperr.network.NetworkImageContainer
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -26,7 +27,7 @@ interface ImageApiService {
 
     @GET("")
     fun getAllImages():
-            Deferred<List<DatabaseImages>>
+            Deferred<NetworkImageContainer>
 
 }
 
