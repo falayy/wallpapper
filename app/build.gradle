@@ -99,5 +99,11 @@ dependencies {
     // WorkManager
     implementation "android.arch.work:work-runtime-ktx:$version_work"
 
+    //dagger2
+    //Dagger 2
+    kapt 'com.google.dagger:dagger-compiler:' + versions_dagger
+    implementation 'com.google.dagger:dagger:' + versions_dagger
+    compileOnly 'org.glassfish:javax.annotation:' + versions_glassfish
+
 
 }

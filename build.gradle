@@ -16,6 +16,8 @@ buildscript {
         version_lifecycle_extensions = "2.0.0"
         version_moshi = "1.8.0"
         version_room = "2.0.0"
+        versions_dagger    ='2.21'
+        versions_glassfish  = '10.0-b28'
         version_work = "1.0.0-alpha11"
         android_plugin_version = "3.3.0"
         version_navigation = "1.0.0"

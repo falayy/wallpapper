@@ -8,8 +8,9 @@ import com.example.wallpaperr.network.asDatabaseModel
 import com.example.wallpaperr.services.ImageApiClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class ImageRepository(val imageDatabase: ImageDatabase) {
+class ImageRepository @Inject constructor(val imageDatabase: ImageDatabase) {
 
 
     val images : LiveData<List<Images>>? = Transformations.map(imageDatabase.imageDao.getImages()){
