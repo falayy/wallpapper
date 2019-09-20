@@ -1,5 +1,10 @@
 package com.example.wallpaperr.di
 
+import android.os.Build
+import androidx.work.Constraints
+import androidx.work.CoroutineWorker
+import androidx.work.NetworkType
+import androidx.work.WorkerParameters
 import com.cottacush.android.androidbaseprojectkt.auth.*
 import com.example.wallpaperr.BuildConfig
 import com.example.wallpaperr.network.AccessTokenProviderImpl
@@ -59,6 +64,21 @@ class PixaBayServiceModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ImageApiService::class.java)
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideWorkManagerConstraint() : Constraints {
+       return Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.UNMETERED)
+            .setRequiresBatteryNotLow(true)
+            .setRequiresCharging(true)
+            .apply {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    setRequiresDeviceIdle(true)
+                }
+            }.build()
     }
 
 

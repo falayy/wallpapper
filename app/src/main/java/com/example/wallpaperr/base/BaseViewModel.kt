@@ -1,8 +1,19 @@
 package com.example.wallpaperr.base
 
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel (val startCoroutines : CoroutineDispatcher) : ViewModel() {
+    private val job = Job()
 
-    abstract fun addAllLiveData()
+    val coroutineScope = CoroutineScope(job + startCoroutines)
+
+
+    override fun onCleared() {
+        super.onCleared()
+        job.cancel()
+    }
+
 }
