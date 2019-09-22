@@ -4,14 +4,14 @@ import com.example.wallpaperr.domain.Images
 import com.example.wallpaperr.model.DatabaseImages
 
 
-data class NetworkImageContainer(val images : List<NetworkImage>)
+
+data class NetworkImageContainer(val images: List<NetworkImage>)
 
 
-data class NetworkImage(val id : Int, val previewImageUrl : String, val fullImage : String)
+data class NetworkImage(val id: Int, val previewImageUrl: String, val fullImage: String)
 
 
-
-fun NetworkImageContainer.asDomainModel() : List<Images> {
+fun NetworkImageContainer.asDomainModel(): List<Images> {
     return images.map {
         Images(
             id = it.id,
@@ -21,13 +21,12 @@ fun NetworkImageContainer.asDomainModel() : List<Images> {
     }
 }
 
-    fun NetworkImageContainer.asDatabaseModel() : Array<DatabaseImages>{
-        return images.map {
-            DatabaseImages(
-                id = it.id,
-                previewImageUrl =  it.previewImageUrl,
-                fullImage =  it.fullImage
-
-            )
-        }.toTypedArray()
-    }
+fun NetworkImageContainer.asDatabaseModel(): Array<DatabaseImages> {
+    return images.map {
+        DatabaseImages(
+            id = it.id,
+            previewImageUrl = it.previewImageUrl,
+            fullImage = it.fullImage
+        )
+    }.toTypedArray()
+}

@@ -12,15 +12,14 @@ data class DatabaseImages constructor(
     val fullImage: String
 )
 
-
-    fun List<DatabaseImages>.asDomainModel(): List<Images> {
-        return map {
-            Images(
-                id = it.id,
-                previewImageUrl = it.previewImageUrl,
-                fullImage = it.fullImage
-            )
-        }
+fun List<DatabaseImages>.asDomainModel(): List<Images> {
+    return map {
+        Images(
+            id = it.id,
+            previewImageUrl = it.previewImageUrl,
+            fullImage = it.fullImage
+        )
     }
+}
 
 

@@ -1,6 +1,6 @@
 package com.example.wallpaperr.services
 
-import com.example.wallpaperr.network.NetworkImage
+import com.example.wallpaperr.network.NetworkImageContainer
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -12,6 +12,6 @@ interface ImageApiService {
     }
 
     @GET("api")
-    suspend fun searchImages(): Response<List<NetworkImage>>
+    suspend fun searchImages(): Response<NetworkImageContainer>
 
 }

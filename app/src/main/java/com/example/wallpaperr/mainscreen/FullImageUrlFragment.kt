@@ -23,4 +23,6 @@ class FullImageUrlFragment : Fragment() {
     }
 
 
+
+
 }
