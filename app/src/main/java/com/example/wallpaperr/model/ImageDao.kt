@@ -21,16 +21,3 @@ interface ImageDao {
 abstract class ImageDatabase : RoomDatabase() {
     abstract val imageDao : ImageDao
 }
-
-private lateinit var INSTANCE : ImageDatabase
-
-fun getDatabase(context: Context) : ImageDatabase{
-    synchronized(ImageDatabase::class.java){
-        if(!::INSTANCE.isInitialized){
-            INSTANCE = Room.databaseBuilder(context.applicationContext,
-                ImageDatabase::class.java,
-                "images" ).build()
-        }
-    }
-    return INSTANCE
-}
