@@ -8,7 +8,7 @@ import javax.inject.Provider
 import javax.inject.Singleton
 
 @Singleton
-class ExampleAppViewModelFactory @Inject constructor(
+class ImagesAppViewModelFactory @Inject constructor(
     private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

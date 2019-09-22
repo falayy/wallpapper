@@ -1,4 +1,4 @@
-package com.example.wallpaperr.di.viewmodel
+package com.example.wallpaperr.images
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -2,6 +2,7 @@ package com.example.wallpaperr.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.wallpaperr.images.ImageViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -11,12 +12,11 @@ import dagger.multibindings.IntoMap
 abstract class ViewModelModule {
 
     @Binds
-    abstract fun bindViewModelFactory(factory: ExampleAppViewModelFactory): ViewModelProvider.Factory
+    abstract fun bindViewModelFactory(factory: ImagesAppViewModelFactory): ViewModelProvider.Factory
 
-   @Binds
+    @Binds
     @IntoMap
-    @ViewModelKey(ImageViewModel
-    ::class)
+    @ViewModelKey(ImageViewModel::class)
     abstract fun bindContactSourcesViewModel(viewModel: ImageViewModel): ViewModel
 
     // TODO Add other ViewModels.

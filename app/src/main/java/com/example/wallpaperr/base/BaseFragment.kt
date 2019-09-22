@@ -34,5 +34,4 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun getViewModel() : BaseViewModel
 
-
 }

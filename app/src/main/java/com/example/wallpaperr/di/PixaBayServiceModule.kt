@@ -69,8 +69,8 @@ class PixaBayServiceModule {
 
     @Provides
     @Singleton
-    fun provideWorkManagerConstraint() : Constraints {
-       return Constraints.Builder()
+    fun provideWorkManagerConstraint(): Constraints {
+        return Constraints.Builder()
             .setRequiredNetworkType(NetworkType.UNMETERED)
             .setRequiresBatteryNotLow(true)
             .setRequiresCharging(true)
@@ -80,7 +80,6 @@ class PixaBayServiceModule {
                 }
             }.build()
     }
-
 
     @Provides
     @Named("ImageAPIService")
