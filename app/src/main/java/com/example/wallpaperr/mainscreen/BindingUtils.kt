@@ -2,16 +2,25 @@ package com.example.wallpaperr.mainscreen
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import coil.api.load
+import androidx.recyclerview.widget.RecyclerView
+
 import com.bumptech.glide.Glide
 import com.example.wallpaperr.domain.Images
-import kotlinx.android.synthetic.main.image_grid_item.view.*
+
+
+
+
+@BindingAdapter("listImages")
+fun bindRecyclerView(recyclerView: RecyclerView, images: List<Images>){
+    val adapter = recyclerView.adapter as PictureGridAdapter
+    adapter.submitList(images)
+}
 
 @BindingAdapter("imageGrid")
-fun ImageView.setImages (imgUrl : String?, imgView : ImageView){
-    imgUrl?.let {
+fun bindImages( imgView : ImageView, imgUrlString : String){
+   imgUrlString?.let {
       Glide.with(imgView.context)
-          .load(imgUrl)
+          .load(imgUrlString)
           .into(imgView)
         }
     }

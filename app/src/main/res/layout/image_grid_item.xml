@@ -2,6 +2,7 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
+
         <variable
             name="images"
             type="com.example.wallpaperr.domain.Images" />
@@ -17,8 +18,10 @@
             android:layout_width="75dp"
             android:layout_margin="5dp"
             android:id="@+id/image_grid"
-            app:imageGrid="@{images}"
+            app:imageGrid="@{images.previewImageUrl}"
             android:layout_height="75dp"/>
+
+
 
 
 
