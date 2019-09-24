@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-
+        <variable
+            name="images"
+            type="com.example.wallpaperr.domain.Images" />
+        
+        
     </data>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:layout_width="75dp"
-        android:layout_margin="5dp"
-        android:id="@+id/image_grid"
-        android:layout_height="75dp"/>
-
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_margin="5dp"
+            android:id="@+id/image_grid"
+            app:imageGrid="@{images}"
+            android:layout_height="75dp"/>
 
 
-</RelativeLayout>
 
+    </RelativeLayout>
 </layout>
+
+
+
