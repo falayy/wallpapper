@@ -32,6 +32,5 @@ abstract class BaseFragment : Fragment() {
 
     fun showSnackbar(stringRes: Int) = mainActivity.showSnackBar(getString(stringRes))
 
-    abstract fun getViewModel() : BaseViewModel
 
 }

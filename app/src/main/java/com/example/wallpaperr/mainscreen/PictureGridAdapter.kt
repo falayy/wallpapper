@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wallpaperr.databinding.ImageGridItemBinding
 import com.example.wallpaperr.domain.Images
 
-class PictureGridAdapter :ListAdapter<Images, PictureGridAdapter.ImageViewHolder>(ImageDiffCallback()) {
+class PictureGridAdapter(val imageClickListener: () -> Unit):ListAdapter<Images, PictureGridAdapter.ImageViewHolder>(ImageDiffCallback()) {
 
 
 
