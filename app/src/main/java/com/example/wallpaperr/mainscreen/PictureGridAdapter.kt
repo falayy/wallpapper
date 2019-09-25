@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wallpaperr.databinding.ImageGridItemBinding
 import com.example.wallpaperr.domain.Images
 
-class PictureGridAdapter(val imageClickListener: () -> Unit):ListAdapter<Images, PictureGridAdapter.ImageViewHolder>(ImageDiffCallback()) {
-
+class PictureGridAdapter(private val imageClickListener: OnclickListener) :
+    ListAdapter<Images, PictureGridAdapter.ImageViewHolder>(ImageDiffCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
@@ -17,27 +17,29 @@ class PictureGridAdapter(val imageClickListener: () -> Unit):ListAdapter<Images,
     }
 
 
-
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-       val items = getItem(position)
+        val items = getItem(position)
+        holder.itemView.setOnClickListener {
+            imageClickListener.onClick(items)
+        }
         holder.bind(items)
-      }
+    }
 
 
+    class ImageViewHolder private constructor(val binding: ImageGridItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    class ImageViewHolder private constructor(val binding: ImageGridItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-
-        fun bind (items : Images){
+        fun bind(items: Images) {
             binding.images = items
             binding.executePendingBindings()
         }
 
         companion object {
             fun from(parent: ViewGroup): ImageViewHolder {
-                val layoutInflater =LayoutInflater.from(parent.context)
-              val binding = ImageGridItemBinding.inflate(layoutInflater, parent, false)
-                   return ImageViewHolder(binding)
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ImageGridItemBinding.inflate(layoutInflater, parent, false)
+                return ImageViewHolder(binding)
             }
         }
 
@@ -53,6 +55,10 @@ class PictureGridAdapter(val imageClickListener: () -> Unit):ListAdapter<Images,
             return oldItem == newItem
         }
 
+    }
+
+    class OnclickListener(val clickListner: (images: Images) -> Unit) {
+        fun onClick(images: Images) = clickListner(images)
     }
 
 

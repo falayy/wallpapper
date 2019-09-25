@@ -10,14 +10,20 @@
         android:id="@+id/pictureGridFragment"
         android:name="com.example.wallpaperr.mainscreen.PictureGridFragment"
         android:label="fragment_picture_grid"
-        tools:layout="@layout/fragment_picture_grid" >
+        tools:layout="@layout/fragment_picture_grid">
         <action
             android:id="@+id/action_pictureGridFragment_to_fullImageUrlFragment"
             app:destination="@id/fullImageUrlFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/fullImageUrlFragment"
         android:name="com.example.wallpaperr.mainscreen.FullImageUrlFragment"
         android:label="fragment_full_image_url"
-        tools:layout="@layout/fragment_full_image_url" />
+        tools:layout="@layout/fragment_full_image_url">
+        <argument
+            android:name="selectedImage"
+            app:argType="com.example.wallpaperr.domain.Images" />
+
+    </fragment>
 </navigation>

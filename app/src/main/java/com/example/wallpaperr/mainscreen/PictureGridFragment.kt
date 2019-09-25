@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.wallpaperr.App
 
 import com.example.wallpaperr.base.BaseFragment
@@ -22,7 +24,7 @@ class PictureGridFragment : BaseFragment() {
 
 
     @Inject
-    lateinit var viewModelFactory : ImagesAppViewModelFactory
+    lateinit var viewModelFactory: ImagesAppViewModelFactory
 
     lateinit var pictureGridBinding: FragmentPictureGridBinding
 
@@ -40,13 +42,25 @@ class PictureGridFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (mainActivity.applicationContext as App).component.inject(this)
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ImageViewModel::class.java)
+        val viewModel =
+            ViewModelProviders.of(this, viewModelFactory).get(ImageViewModel::class.java)
         pictureGridBinding.viewmodel = viewModel
         viewModel.getListOfImages()
-        pictureGridBinding.imageGridRecyclerView.adapter = PictureGridAdapter {
-            //view model gets full image
-        }
+        pictureGridBinding.imageGridRecyclerView.adapter =
+            PictureGridAdapter(PictureGridAdapter.OnclickListener {
+                viewModel.onNavigateToFullImage(it)
+            })
 
+
+        viewModel.navigateToFullImage.observe(this, Observer {
+            if (null != it) {
+                this.findNavController().navigate(
+                    PictureGridFragmentDirections
+                        .actionPictureGridFragmentToFullImageUrlFragment(it)
+                )
+                viewModel.onNavigateToFullImageComplete()
+            }
+        })
 
 
     }

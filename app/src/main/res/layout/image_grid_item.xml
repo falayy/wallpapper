@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
 
         <variable
             name="images"
             type="com.example.wallpaperr.domain.Images" />
-        
-        
+
+
     </data>
 
     <RelativeLayout
@@ -15,14 +16,11 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="75dp"
-            android:layout_margin="5dp"
             android:id="@+id/image_grid"
-            app:imageGrid="@{images.previewImageUrl}"
-            android:layout_height="75dp"/>
-
-
-
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_margin="5dp"
+            app:imageGrid="@{images.previewImageUrl}" />
 
 
     </RelativeLayout>
