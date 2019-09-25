@@ -8,8 +8,6 @@ import com.bumptech.glide.Glide
 import com.example.wallpaperr.domain.Images
 
 
-
-
 @BindingAdapter("listImages")
 fun bindRecyclerView(recyclerView: RecyclerView, images: List<Images>){
     val adapter = recyclerView.adapter as PictureGridAdapter
