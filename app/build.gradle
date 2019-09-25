@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
@@ -79,6 +81,9 @@ dependencies {
 
     //Glide
     implementation "com.github.bumptech.glide:glide:$version_glide"
+
+
+    //navigation safe args
 
 
     //coroutines
