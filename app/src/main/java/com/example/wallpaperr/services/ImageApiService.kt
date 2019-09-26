@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 interface ImageApiService {
 
-    @GET("api")
+    @GET("api/?key=${Constants.API_KEY}")
     suspend fun searchImages(): Response<NetworkImageContainer>
 
 }

@@ -24,8 +24,7 @@ class ImageViewModel @Inject constructor(private val imageRepository: ImageRepos
     }
 
     fun getListOfImages() : LiveData<List<Images>> {
-      val imageList = imageRepository.images
-        return imageList!!
+     return imageRepository.images!!
     }
 
     fun onNavigateToFullImage(image  : Images){
