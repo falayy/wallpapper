@@ -34,7 +34,5 @@ class FullImageUrlFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var fullImage = FullImageUrlFragmentArgs.fromBundle(arguments!!).selectedImage
         binding.images = fullImage
-
-
     }
 }

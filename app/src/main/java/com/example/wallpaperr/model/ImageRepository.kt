@@ -22,6 +22,7 @@ class ImageRepository @Inject constructor(
 ) {
 
     val images: LiveData<List<Images>>? = Transformations.map(imageDatabase.imageDao.getImages()) {
+        Timber.d("We got called::: $it")
         it.asDomainModel()
     }
 
@@ -30,7 +31,10 @@ class ImageRepository @Inject constructor(
             try {
                 when (val result = getAPIResult(imageApiService.searchImages())) {
                     is Result.Success -> {
-                        imageDatabase.imageDao.insertAllImages(*result.data.asDatabaseModel())
+                        val l =
+                            imageDatabase.imageDao.insertAllImages(*result.data.asDatabaseModel())
+                        Timber.d("Rows inserted: ${l.size}")
+                        Timber.d("Values from DB: ${imageDatabase.imageDao.getImages().value}")
                     }
                     is Result.Error -> {
                         Timber.d("Error: ${result.errorMessage}")

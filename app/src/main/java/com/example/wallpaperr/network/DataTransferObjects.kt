@@ -2,17 +2,21 @@ package com.example.wallpaperr.network
 
 import com.example.wallpaperr.domain.Images
 import com.example.wallpaperr.model.DatabaseImages
+import com.google.gson.annotations.SerializedName
 
 
+data class NetworkImageContainer(val hits: List<NetworkImage>)
 
-data class NetworkImageContainer(val images: List<NetworkImage>)
 
-
-data class NetworkImage(val id: Int, val previewImageUrl: String, val fullImage: String)
+data class NetworkImage(
+    @SerializedName("id")
+    val id: Int, @SerializedName("previewURL") val previewImageUrl: String,
+    @SerializedName("imageURL") val fullImage: String
+)
 
 
 fun NetworkImageContainer.asDomainModel(): List<Images> {
-    return images.map {
+    return hits.map {
         Images(
             id = it.id,
             previewImageUrl = it.previewImageUrl,
@@ -22,7 +26,7 @@ fun NetworkImageContainer.asDomainModel(): List<Images> {
 }
 
 fun NetworkImageContainer.asDatabaseModel(): Array<DatabaseImages> {
-    return images.map {
+    return hits.map {
         DatabaseImages(
             id = it.id,
             previewImageUrl = it.previewImageUrl,

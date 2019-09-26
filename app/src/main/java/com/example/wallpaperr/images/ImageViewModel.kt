@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.wallpaperr.domain.Images
 import com.example.wallpaperr.model.ImageRepository
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -14,8 +15,8 @@ class ImageViewModel @Inject constructor(private val imageRepository: ImageRepos
     ViewModel() {
 
     private val _navigateToFullImage = MutableLiveData<Images>()
-    val navigateToFullImage : LiveData<Images>
-                 get() = _navigateToFullImage
+    val navigateToFullImage: LiveData<Images>
+        get() = _navigateToFullImage
 
     init {
         viewModelScope.launch {
@@ -23,15 +24,18 @@ class ImageViewModel @Inject constructor(private val imageRepository: ImageRepos
         }
     }
 
-    fun getListOfImages() : LiveData<List<Images>> {
-     return imageRepository.images!!
+    fun getListOfImages(): List<Images> {
+        imageRepository.images?.value?.let {
+            return it
+        }
+        return ArrayList()
     }
 
-    fun onNavigateToFullImage(image  : Images){
+    fun onNavigateToFullImage(image: Images) {
         _navigateToFullImage.value = image
     }
 
-    fun  onNavigateToFullImageComplete(){
+    fun onNavigateToFullImageComplete() {
         _navigateToFullImage.value = null
 
     }
