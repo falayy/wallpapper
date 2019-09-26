@@ -7,6 +7,7 @@ import androidx.work.NetworkType
 import androidx.work.WorkerParameters
 import com.cottacush.android.androidbaseprojectkt.auth.*
 import com.example.wallpaperr.BuildConfig
+import com.example.wallpaperr.Constants
 import com.example.wallpaperr.network.AccessTokenProviderImpl
 import com.example.wallpaperr.services.ImageAPIAuthService
 import com.example.wallpaperr.services.ImageApiService
@@ -59,7 +60,7 @@ class PixaBayServiceModule {
         gson: Gson
     ): ImageApiService {
         return Retrofit.Builder()
-            .baseUrl(ImageApiService.BASE_URL)
+            .baseUrl(Constants.BASE_URL)
             .client(client.get())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
