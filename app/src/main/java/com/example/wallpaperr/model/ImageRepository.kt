@@ -20,8 +20,8 @@ class ImageRepository @Inject constructor(
 ) {
 
     val images = Transformations.map(imageDatabase.imageDao.getImages()) {
-        it.asDomainModel()
         Timber.d("We got called::: ${it.size}")
+        it.asDomainModel()
     }
 
     suspend fun refreshImages() {
@@ -32,7 +32,8 @@ class ImageRepository @Inject constructor(
                         imageDatabase.imageDao.dropImageTable()
                         imageDatabase.imageDao.insertAllImages(*result.data.asDatabaseModel())
                         Timber.d("We got called::: ${result.data.size}")
-                    }is Result.Error-> {
+                    }
+                    is Result.Error -> {
                         Timber.d("Error: ${result.errorMessage}")
                     }
 
