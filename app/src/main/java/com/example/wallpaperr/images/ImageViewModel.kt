@@ -13,6 +13,7 @@ import javax.inject.Inject
 
 class ImageViewModel @Inject constructor(private val imageRepository: ImageRepository) :
     ViewModel() {
+    val images = imageRepository.images
 
     private val _navigateToFullImage = MutableLiveData<Images>()
     val navigateToFullImage: LiveData<Images>
@@ -24,12 +25,6 @@ class ImageViewModel @Inject constructor(private val imageRepository: ImageRepos
         }
     }
 
-    fun getListOfImages(): List<Images> {
-        imageRepository.images?.value?.let {
-            return it
-        }
-        return ArrayList()
-    }
 
     fun onNavigateToFullImage(image: Images) {
         _navigateToFullImage.value = image
