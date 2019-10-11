@@ -45,7 +45,7 @@ class PictureGridFragment : BaseFragment() {
         val viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(ImageViewModel::class.java)
         pictureGridBinding.viewmodel = viewModel
-        viewModel.getListOfImages()
+
         pictureGridBinding.imageGridRecyclerView.adapter =
             PictureGridAdapter(PictureGridAdapter.OnclickListener {
                 viewModel.onNavigateToFullImage(it)

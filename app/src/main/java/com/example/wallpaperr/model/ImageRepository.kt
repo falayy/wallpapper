@@ -1,9 +1,7 @@
 package com.example.wallpaperr.model
 
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.example.wallpaperr.domain.Images
 import com.example.wallpaperr.network.asDatabaseModel
 import com.example.wallpaperr.networkutils.GENERIC_ERROR_CODE
 import com.example.wallpaperr.networkutils.GENERIC_ERROR_MESSAGE
@@ -21,8 +19,8 @@ class ImageRepository @Inject constructor(
     private val imageApiService: ImageApiService
 ) {
 
-    val images: LiveData<List<Images>>? = Transformations.map(imageDatabase.imageDao.getImages()) {
-        Timber.d("We got called::: $it")
+    val images = Transformations.map(imageDatabase.imageDao.getImages()) {
+        Timber.d("We got called::: ${it.size}")
         it.asDomainModel()
     }
 
@@ -31,19 +29,21 @@ class ImageRepository @Inject constructor(
             try {
                 when (val result = getAPIResult(imageApiService.searchImages())) {
                     is Result.Success -> {
-                        val l =
-                            imageDatabase.imageDao.insertAllImages(*result.data.asDatabaseModel())
-                        Timber.d("Rows inserted: ${l.size}")
-                        Timber.d("Values from DB: ${imageDatabase.imageDao.getImages().value}")
+                        imageDatabase.imageDao.dropImageTable()
+                        imageDatabase.imageDao.insertAllImages(*result.data.asDatabaseModel())
+                        Timber.d("We got called::: ${result.data.size}")
                     }
                     is Result.Error -> {
                         Timber.d("Error: ${result.errorMessage}")
                     }
-                }
 
+                }
             } catch (e: Exception) {
+                Timber.e(e)
                 Result.Error(GENERIC_ERROR_CODE, e.message ?: GENERIC_ERROR_MESSAGE)
             }
+
+
         }
     }
 }

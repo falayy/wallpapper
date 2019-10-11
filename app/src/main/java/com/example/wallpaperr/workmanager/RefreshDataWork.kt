@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.example.wallpaperr.App
-import com.example.wallpaperr.model.ImageDatabase
+
 import com.example.wallpaperr.model.ImageRepository
 import retrofit2.HttpException
 import javax.inject.Inject
@@ -27,7 +27,7 @@ class RefreshDataWork(appContext: Context, params: WorkerParameters) :
     override suspend fun doWork(): Payload {
 
         return try {
-          //  repository.refreshVideos()
+            repository.refreshImages()
             Payload(Result.SUCCESS)
         } catch (exception: HttpException) {
             Payload(Result.RETRY)
