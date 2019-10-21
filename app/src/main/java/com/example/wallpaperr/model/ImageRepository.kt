@@ -9,6 +9,7 @@ import com.example.wallpaperr.networkutils.Result
 import com.example.wallpaperr.networkutils.getAPIResult
 import com.example.wallpaperr.services.ImageApiService
 import kotlinx.coroutines.Dispatchers
+import com.example.wallpaperr.model.asDomainModel
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.lang.Exception
@@ -30,8 +31,8 @@ class ImageRepository @Inject constructor(
                 when (val result = getAPIResult(imageApiService.searchImages())) {
                     is Result.Success -> {
                         imageDatabase.imageDao.dropImageTable()
-                        imageDatabase.imageDao.insertAllImages(*result.data.asDatabaseModel())
-                        Timber.d("We got called::: ${result.data.size}")
+                        imageDatabase.imageDao.insertAllImages(*result.data.hits.asDatabaseModel())
+                        Timber.d("We got called::: ${result.data.hits.size}")
                     }
                     is Result.Error -> {
                         Timber.d("Error: ${result.errorMessage}")

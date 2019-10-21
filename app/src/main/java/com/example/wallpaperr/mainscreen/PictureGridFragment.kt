@@ -47,7 +47,7 @@ class PictureGridFragment : BaseFragment() {
         pictureGridBinding.viewmodel = viewModel
 
         pictureGridBinding.imageGridRecyclerView.adapter =
-            PictureGridAdapter(PictureGridAdapter.OnclickListener {
+            com.example.wallpaperr.mainscreen.PictureGridAdapter(PictureGridAdapter.OnclickListener {
                 viewModel.onNavigateToFullImage(it)
             })
 
