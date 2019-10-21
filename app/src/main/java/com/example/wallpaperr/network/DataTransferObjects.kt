@@ -6,7 +6,7 @@ import com.example.wallpaperr.model.DatabaseImages
 import com.google.gson.annotations.SerializedName
 
 
-data class NetworkImage(
+data class Hit(
     @SerializedName("id")
     val id: Int,
     @SerializedName("previewURL")
@@ -16,7 +16,7 @@ data class NetworkImage(
 )
 
 
-fun NetworkImage.asDomainModel(): Images {
+fun Hit.asDomainModel(): Images {
     return Images(
         id,
         previewImageUrl,
@@ -25,7 +25,7 @@ fun NetworkImage.asDomainModel(): Images {
 
 }
 
-fun List<NetworkImage>.asDatabaseModel(): Array<DatabaseImages> {
+fun List<Hit>.asDatabaseModel(): Array<DatabaseImages> {
     return map {
         DatabaseImages(
             id = it.id,
