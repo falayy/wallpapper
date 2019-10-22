@@ -61,7 +61,6 @@ class PictureGridFragment : BaseFragment() {
                 viewModel.onNavigateToFullImageComplete()
             }
         })
-
-
     }
+
 }

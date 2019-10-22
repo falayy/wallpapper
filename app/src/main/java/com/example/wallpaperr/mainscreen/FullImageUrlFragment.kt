@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 
 import com.example.wallpaperr.R
+import com.example.wallpaperr.base.BaseFragment
 import com.example.wallpaperr.databinding.FragmentFullImageUrlBinding
 import com.example.wallpaperr.model.ImageRepository
 import javax.inject.Inject
@@ -16,7 +17,7 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class FullImageUrlFragment : Fragment() {
+class FullImageUrlFragment : BaseFragment() {
     lateinit var binding: FragmentFullImageUrlBinding
 
     override fun onCreateView(
@@ -35,4 +36,6 @@ class FullImageUrlFragment : Fragment() {
         var fullImage = FullImageUrlFragmentArgs.fromBundle(arguments!!).selectedImage
         binding.images = fullImage
     }
+
+
 }
