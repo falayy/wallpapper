@@ -102,6 +102,9 @@ dependencies {
     // WorkManager
     implementation "android.arch.work:work-runtime-ktx:$version_work"
 
+    //
+    implementation "com.afollestad.material-dialogs:core:$version_materialDialogs"
+
     implementation "com.jakewharton.timber:timber:$version_timber"
 
     //Dagger 2

@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Set as wallpaper</string>
+    <string name="title_message">This image would be your Android device\'s wallpaper</string>
+    <string name="agree">Yes</string>
+    <string name="disagree">No</string>
 </resources>
