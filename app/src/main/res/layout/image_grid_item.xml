@@ -19,9 +19,9 @@
             android:id="@+id/image_grid"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:cropToPadding = "true"
+            android:cropToPadding ="true"
             android:scaleType="centerCrop"
-            android:layout_margin="5dp"
+            android:layout_margin="2dp"
             app:imageGrid="@{images.previewImageUrl}" />
 
 
