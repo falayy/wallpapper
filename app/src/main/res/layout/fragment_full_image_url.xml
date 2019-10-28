@@ -33,10 +33,14 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
-            android:layout_height="60dp"/>
+            android:id="@+id/fab_action"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/ic_add_black_24dp"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
