@@ -19,6 +19,8 @@
     app:defaultNavHost="true"
     />
 
+    <include layout="@layout/loading_status" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

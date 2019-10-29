@@ -15,6 +15,7 @@ import com.example.wallpaperr.base.BaseFragment
 import com.example.wallpaperr.databinding.FragmentPictureGridBinding
 import com.example.wallpaperr.di.viewmodel.ImagesAppViewModelFactory
 import com.example.wallpaperr.images.ImageViewModel
+import com.example.wallpaperr.networkutils.LoadingStatus
 import javax.inject.Inject
 
 /**
@@ -47,7 +48,7 @@ class PictureGridFragment : BaseFragment() {
         pictureGridBinding.viewmodel = viewModel
 
         pictureGridBinding.imageGridRecyclerView.adapter =
-            com.example.wallpaperr.mainscreen.PictureGridAdapter(PictureGridAdapter.OnclickListener {
+            PictureGridAdapter(PictureGridAdapter.OnclickListener {
                 viewModel.onNavigateToFullImage(it)
             })
 
@@ -61,6 +62,15 @@ class PictureGridFragment : BaseFragment() {
                 viewModel.onNavigateToFullImageComplete()
             }
         })
+
+        viewModel.loadingStatus.observe(this, Observer {
+            when (it) {
+                LoadingStatus.Success -> mainActivity.dismissLoading()
+                is LoadingStatus.Loading -> mainActivity.showLoading(it.message)
+                is LoadingStatus.Error -> mainActivity.showError(it.errorMessage)
+            }
+        })
+    }
     }
 
-}
+
