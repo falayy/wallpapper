@@ -7,4 +7,6 @@
     <string name="title_message">This image would be your Android device\'s wallpaper</string>
     <string name="agree">Yes</string>
     <string name="disagree">No</string>
+    <string name="ok">ok</string>
+    <string name="default_loading_message">Please Loading....</string>
 </resources>
