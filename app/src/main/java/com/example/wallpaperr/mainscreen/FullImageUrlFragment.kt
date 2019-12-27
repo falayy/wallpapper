@@ -64,7 +64,6 @@ class FullImageUrlFragment : BaseFragment() {
                     viewModel.decode(Glide.with(this@FullImageUrlFragment), fullImage.fullImage)
                     onGetBitmap()
                 }
-
                 negativeButton(R.string.disagree) {
                     dismiss()
                 }
