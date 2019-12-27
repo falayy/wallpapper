@@ -1,10 +1,15 @@
 package com.example.wallpaperr.mainscreen
 
+import android.graphics.drawable.Drawable
+import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
 import com.example.wallpaperr.domain.Images
 import timber.log.Timber
 
