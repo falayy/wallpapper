@@ -13,7 +13,9 @@
         tools:layout="@layout/fragment_picture_grid">
         <action
             android:id="@+id/action_pictureGridFragment_to_fullImageUrlFragment"
-            app:destination="@id/fullImageUrlFragment" />
+            app:destination="@id/fullImageUrlFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -24,6 +26,13 @@
         <argument
             android:name="selectedImage"
             app:argType="com.example.wallpaperr.domain.Images" />
+        <action
+            android:id="@+id/action_fullImageUrlFragment_to_pictureGridFragment"
+            app:destination="@id/pictureGridFragment"
+            app:enterAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
 
     </fragment>
 </navigation>
