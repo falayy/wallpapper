@@ -26,6 +26,8 @@ buildscript {
         version_okhttp = "4.0.1"
         version_recyclerview = "1.0.0"
         version_timber = "4.7.1"
+        version_truthTest ='1.0.1'
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
